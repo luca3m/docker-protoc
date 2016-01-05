@@ -12,7 +12,7 @@ RUN apt-get -yqq update && \
     # Install protobuf
     git clone https://github.com/google/protobuf.git /protobuf && \
     cd /protobuf && \
-      git checkout v2.6.1 && \
+      git checkout v2.5.0 && \
       ./autogen.sh && \
       ./configure && \
       make && \
@@ -29,5 +29,7 @@ RUN apt-get -yqq update && \
     apt-get -yqq clean && \
     rm -rf /protobuf /protoc-gen-doc
 
+RUN mkdir /protos
+WORKDIR /protos
 ENTRYPOINT ["protoc"]
 CMD ["--help"]

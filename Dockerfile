@@ -18,16 +18,10 @@ RUN apt-get -yqq update && \
       make && \
       make install && \
       ldconfig && \
-    # Install protoc-gen-doc
-    git clone https://github.com/estan/protoc-gen-doc.git /protoc-gen-doc && \
-    cd /protoc-gen-doc && \
-      qmake && \
-      make && \
-      cp protoc-gen-doc /usr/local/bin && \
     # Cleanup
     apt-get -yqq remove git curl unzip curl dh-autoreconf && \
     apt-get -yqq clean && \
-    rm -rf /protobuf /protoc-gen-doc
+    rm -rf /protobuf
 
 RUN mkdir /protos
 WORKDIR /protos
